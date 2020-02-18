@@ -58,7 +58,6 @@
             android:layout_weight="1"
             android:textSize="60sp"
             android:freezesText="true"/>
-
         <Button
             android:id="@+id/button_01"
             android:layout_width="0dp"
@@ -66,7 +65,6 @@
             android:layout_weight="1"
             android:textSize="60sp"
             android:freezesText="true"/>
-
         <Button
             android:id="@+id/button_02"
             android:layout_width="0dp"
@@ -74,7 +72,6 @@
             android:layout_weight="1"
             android:textSize="60sp"
             android:freezesText="true"/>
-
     </LinearLayout>
 
     <LinearLayout
@@ -89,7 +86,6 @@
             android:layout_weight="1"
             android:textSize="60sp"
             android:freezesText="true"/>
-
         <Button
             android:id="@+id/button_11"
             android:layout_width="0dp"
@@ -126,8 +122,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:textSize="60sp"
-            android:freezesText="true"/>
+            android:freezesText="true"
+            android:textSize="60sp" />
 
         <Button
             android:id="@+id/button_22"

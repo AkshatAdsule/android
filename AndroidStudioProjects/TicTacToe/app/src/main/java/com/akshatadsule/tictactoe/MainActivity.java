@@ -1,11 +1,14 @@
 package com.akshatadsule.tictactoe;
 
-import androidx.appcompat.app.AppCompatActivity;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -20,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView textViewPlayer1;
     private TextView textViewPlayer2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 clearGame();
             }
         });
+
     }
 
     //for game-play buttons
@@ -96,6 +101,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (field[i][0].equals(field[i][1])
                     && field[i][0].equals(field[i][2])
                     && !field[i][0].equals("")) {
+                buttons[i][0].setBackgroundColor(Color.RED);
+                buttons[i][1].setBackgroundColor(Color.RED);
+                buttons[i][2].setBackgroundColor(Color.RED);
                 return true;
             }
         }
@@ -104,6 +112,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if (field[0][i].equals(field[1][i])
                     && field[0][i].equals(field[2][i])
                     && !field[0][i].equals("")) {
+                buttons[0][i].setBackgroundColor(Color.RED);
+                buttons[1][i].setBackgroundColor(Color.RED);
+                buttons[2][i].setBackgroundColor(Color.RED);
                 return true;
             }
         }
@@ -111,12 +122,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (field[0][0].equals(field[1][1])
                 && field[0][0].equals(field[2][2])
                 && !field[0][0].equals("")) {
+            buttons[0][0].setBackgroundColor(Color.RED);
+            buttons[1][1].setBackgroundColor(Color.RED);
+            buttons[2][2].setBackgroundColor(Color.RED);
             return true;
+
         }
 
         if (field[0][2].equals(field[1][1])
                 && field[0][2].equals(field[2][0])
                 && !field[0][2].equals("")) {
+            buttons[0][2].setBackgroundColor(Color.RED);
+            buttons[1][1].setBackgroundColor(Color.RED);
+            buttons[2][0].setBackgroundColor(Color.RED);
             return true;
         }
         return false;
@@ -125,14 +143,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         player1Points++;
         Toast.makeText(this,"X wins!", Toast.LENGTH_SHORT).show();
         updatePointsText();
-        resetBoard();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resetBoard();
+            }
+        }, 500);
     }
 
     private void player2Wins(){
         player2Points++;
         Toast.makeText(this,"O wins!", Toast.LENGTH_SHORT).show();
         updatePointsText();
-        resetBoard();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resetBoard();
+            }
+        }, 500);
     }
 
     private void draw(){
@@ -149,11 +177,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         for(int i = 0; i<3; i++){
             for(int j = 0; j<3; j++){
             buttons[i][j].setText("");
+                resetButton(buttons[i][j]);
             }
         }
         roundCount = 0;
         player1Turn = true;
-        Toast.makeText(this,"Reseted!", Toast.LENGTH_SHORT).show();
     }
 
     private void resetGame(){
@@ -161,6 +189,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         player2Points = 0;
         updatePointsText();
         resetBoard();
+        Toast.makeText(this, "Reseted!", Toast.LENGTH_SHORT).show();
     }
 
     private void clearGame(){
@@ -172,5 +201,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         player1Turn = true;
         Toast.makeText(this,"Cleared!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void resetButton(Button btn) {
+        Button defBtn = new Button(this);
+        btn.setBackground(defBtn.getBackground());
     }
 }
