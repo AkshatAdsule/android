@@ -14,7 +14,8 @@
             android:layout_height="wrap_content"
             android:freezesText="true"
             android:text="X: 0"
-            android:textSize="30sp" />
+            android:textSize="30sp"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:id="@+id/text_view_p2"
@@ -23,7 +24,8 @@
             android:layout_below="@+id/text_view_p1"
             android:text="O: 0"
             android:textSize="30sp"
-            android:freezesText="true"/>
+            android:freezesText="true"
+            android:layout_marginLeft="10dp"/>
 
         <Button
             android:id="@+id/button_reset"
