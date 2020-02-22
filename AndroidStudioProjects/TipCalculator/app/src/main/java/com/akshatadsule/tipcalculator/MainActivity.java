@@ -13,8 +13,6 @@ import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
-    //TODO on keyboard close/editText change
-
     //for tipAmount SeekBar
     private SeekBar tipAmount;
     private TextView currentPercent;
